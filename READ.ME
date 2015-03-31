@@ -1,0 +1,39 @@
+**********************************
+******** Mastermind Solver *******
+********      READ ME      *******
+**********************************
+
+Architecture:
+The project is divided into 2 parts: a DNF solver, and a Mastermind modelisation.
+
+The DNF solver implements a Davis and Putnam algorithm:
+    utils.sml    : some primitives
+    variable.sml : definition of a logical Variable
+    clause.sml   : definition of a clause, in DNF
+    set.sml      : definition of a set of clause (conjunction of DNF)
+    dp.sml       : the solver itself
+
+   + testDP.sml  : some tests on the solver
+   + test.sml	 : same
+  
+The mastermind modelisation is devided in two parts:
+    game.sml           : everything about the game itself
+    gameResolution.sml : transcription from game to logical modelisation and modelisation to game
+
+It is interfaced into :
+   main.sml
+
+
+You may change the difficulty into game.sml, line 14 and 16 by changing the number of hole in a line, and the 
+total number of color. Default values are 5 holes and 10 colors (instant resolution).
+
+The display is the following:
+Grid
+C10 C9 C8 C7 C6  : 2 - 3 - 0 
+*** solution ***
+C6 C2 C1 C10 C8 
+
+-> display the grid, line by line
+   each line displays the color (from C1 -> CX, where X is the number of color) in the holes,
+   then the result (color not in the grid, color missplaced, color wellplaced)
+   
